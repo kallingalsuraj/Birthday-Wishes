@@ -7,6 +7,12 @@ const CONFIG = {
   cardTo: "My Girl 💖",        // "Made with love for ..." on the card's left page
   from: "Tintumon",            // your name
 
+  // Lock screen: the code is the date as DDMMYYYY (she may type it with or without - or /)
+  lock: {
+    code: "07052022",
+    hint: "It's the date when it all started 💞",
+  },
+
   // One entry = one line of the love letter (long lines wrap automatically)
   wish: [
     "Dear {name},",
@@ -26,7 +32,6 @@ const CONFIG = {
     { src: "photos/2.jpeg", caption: "That smile 😊", emoji: "😊" },
     { src: "photos/3.jpeg", caption: "Our happy place", emoji: "🏖️" },
     { src: "photos/4.jpeg", caption: "Pure joy", emoji: "🎡" },
-    { src: "photos/5.jpeg", caption: "Silly us", emoji: "🤪" },
     { src: "photos/6.jpeg", caption: "Sweet moments", emoji: "☕" },
     { src: "photos/7.jpeg", caption: "My favourite view", emoji: "💛" },
     { src: "photos/8.jpeg", caption: "Making memories", emoji: "📸" },
@@ -59,7 +64,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const SVGNS = "http://www.w3.org/2000/svg";
 
 /* ---------- Scene switching (single page, no reloads) ---------- */
-let current = "cake";
+let current = "lock";
 const enterHooks = {};
 function goTo(name) {
   $(`#scene-${current}`).classList.remove("active");
@@ -124,6 +129,33 @@ function tick() {
   raf = pieces.length ? requestAnimationFrame(tick) : null;
   if (!raf) ctx.clearRect(0, 0, innerWidth, innerHeight);
 }
+
+/* =========================================================
+   SCENE 0 — Lock screen
+   ========================================================= */
+(function lockScreen() {
+  const form = $("#lockForm"), input = $("#lockInput"), msg = $("#lockMsg"), icon = $("#lockIcon");
+  let tries = 0, unlocked = false;
+  const showHint = () => { msg.textContent = "💡 " + CONFIG.lock.hint; };
+  $("#hintBtn").addEventListener("click", showHint);
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (unlocked) return;
+    if (input.value.replace(/\D/g, "") === CONFIG.lock.code) {
+      unlocked = true;
+      icon.textContent = "🔓";
+      msg.textContent = "Welcome, Athira 💖";
+      confetti(90, innerWidth / 2, innerHeight * .4);
+      setTimeout(() => goTo("cake"), 900);
+      return;
+    }
+    tries++;
+    msg.textContent = "Hmm, that's not it 🙈 Try again";
+    form.classList.remove("shake"); void form.offsetWidth; form.classList.add("shake");
+    input.select();
+    if (tries >= 3) setTimeout(showHint, 1200);
+  });
+})();
 
 /* =========================================================
    SCENE 1 — Cake & candles

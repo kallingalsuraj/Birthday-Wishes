@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#3a0a2a" />
   <title>Happy Birthday, Athira 💖</title>
+  <meta name="description" content="A little surprise made just for you 💖" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Happy Birthday, Athira 💖" />
+  <meta property="og:description" content="A little surprise made just for you 💖" />
+  <meta property="og:url" content="https://kallingalsuraj.github.io/Birthday-Wishes/" />
+  <meta property="og:image" content="https://kallingalsuraj.github.io/Birthday-Wishes/photos/9.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="960" />
+  <meta property="og:image:height" content="1280" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Happy Birthday, Athira 💖" />
+  <meta name="twitter:description" content="A little surprise made just for you 💖" />
+  <meta name="twitter:image" content="https://kallingalsuraj.github.io/Birthday-Wishes/photos/9.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -16,8 +29,21 @@
 
   <main id="app">
 
+    <!-- SCENE 0: LOCK -->
+    <section class="scene active" id="scene-lock">
+      <div class="lock-icon" id="lockIcon">🔒</div>
+      <h1 class="title">Just for you, Athira</h1>
+      <p class="sub">Enter the secret date to open your surprise</p>
+      <form class="lock-form" id="lockForm" autocomplete="off">
+        <input id="lockInput" type="text" inputmode="numeric" maxlength="10" placeholder="DDMMYYYY" aria-label="Secret date" />
+        <button class="btn" type="submit">Unlock 💖</button>
+      </form>
+      <p class="lock-msg" id="lockMsg" aria-live="polite"></p>
+      <button class="btn ghost" id="hintBtn" type="button">💡 Need a hint?</button>
+    </section>
+
     <!-- SCENE 1: CANDLES -->
-    <section class="scene active" id="scene-cake">
+    <section class="scene" id="scene-cake">
       <h1 class="title" id="cakeTitle">Make a wish, Athira…</h1>
       <p class="sub" id="cakeSub">then blow out the candles 🕯️</p>
 
