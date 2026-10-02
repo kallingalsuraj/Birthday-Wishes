@@ -40,7 +40,7 @@ const CONFIG = {
   },
 
   dinner: {
-    "Date": "Saturday, 8 August 2026",
+    "Date": "Thursday, 8 October 2026",
     "Time": "8:00 PM",
     "Table": "A cosy candle-lit table for two",
     "Dress code": "Just bring that beautiful smile",
@@ -224,6 +224,7 @@ $("#toCard").addEventListener("click", () => goTo("card"));
 const card = $("#card");
 $("#coverName").textContent = CONFIG.nickname;
 $("#cardTo").textContent = "Made with love for " + CONFIG.cardTo;
+$("#cardToM").textContent = "Made with love for " + CONFIG.cardTo;
 // every character gets its own span so the letter can be "handwritten" without the text reflowing
 const wishBox = $("#wishText"), wishPage = $(".inside-right");
 CONFIG.wish.forEach((l, i, a) => {
@@ -247,9 +248,9 @@ async function writeLetter() {
       pen?.classList.remove("pen");
       ch.classList.add("on", "pen"); pen = ch;
       wishPage.scrollTop = Math.max(0, ch.offsetTop - wishPage.clientHeight + 70);
-      await sleep(/[,.!?—]/.test(ch.textContent) ? 260 : 55);
+      await sleep(/[,.!?—]/.test(ch.textContent) ? 130 : 22);
     }
-    await sleep(450);
+    await sleep(140);
   }
   pen?.classList.remove("pen");
   if (run === writeRun) $("#toPhotos").classList.remove("hidden");

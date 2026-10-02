@@ -164,9 +164,23 @@ body {
 .mini { font-family: "Dancing Script", cursive; font-size: 1.3rem; }
 
 /* on phones the cover swings off to the left, so the card never overflows the screen */
+.mobile-head { display: none; }
+#scene-card .btn.next { position: sticky; bottom: 14px; z-index: 5; }
+
+/* on phones the letter is one tall page: the left-page message becomes a header and the card grows to fit the text */
 @media (max-width: 720px) {
-  .card { --h: calc(var(--w) * 2); }
+  .card { --w: min(340px, 90vw); height: auto; min-height: calc(var(--w) * 1.5); }
   .card.open { transform: none; }
+  .page { position: relative; inset: auto; min-height: calc(var(--w) * 1.5); overflow: visible; padding: 18px 20px 40px; }
+  .wish { font-size: 1.05rem; line-height: 30px; }
+  .mobile-head {
+    display: flex; flex-direction: column; align-items: center; text-align: center; margin: 0 -4px 12px; padding-bottom: 10px;
+    border-bottom: 2px dotted rgba(194, 24, 91, .35); color: #b3123d;
+  }
+  .mh-heart { font-size: 1.8rem; animation: beat 1.4s ease-in-out infinite; }
+  .mobile-head b { font-family: "Great Vibes", cursive; font-weight: 400; font-size: 1.9rem; line-height: 1.1; }
+  .mobile-head small { font-family: "Dancing Script", cursive; font-size: 1.1rem; color: var(--ink); }
+  .corner { bottom: 8px; }
 }
 
 /* ---------- MEMORY ROUTE ---------- */
