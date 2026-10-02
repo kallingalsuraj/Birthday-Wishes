@@ -17,7 +17,7 @@ const CONFIG = {
   wish: [
     "Dear {name},",
     "First of all, Happy Birthday to you! 🎂",
-    "Once again it's your birthday and I won't be right there beside you, but something tells me it won't be long before I'm celebrating it by your side 😏",
+    "Once again it's your birthday and I won't be right there beside you, but something tells me it won't be long before I'm celebrating it by your side 👀",
     "Congratulations on turning 25! Live the way you want, fulfil every single wish, and never change for anyone.",
     "And yes, I am so proud of my girl. 💖",
     "As I always say, I will always love you more 💕 and I'll always have your back.",
